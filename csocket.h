@@ -6,7 +6,7 @@
 #include <windows.h>
 #else
 #include <netinet/in.h>
-#include <asm/errno.h>
+#include <errno.h>
 #include <unistd.h>
 #include <cstring>
 #endif
@@ -18,20 +18,20 @@
 #define FAILURE     1
 #define INFINITY   -1
 
-class csocket 
+class csocket
 {
 public:
 
-    enum SocketState 
+    enum SocketState
     {
         CLOSED,
-        CONNECTED,          
+        CONNECTED,
         ERRORED,
     };
 
 
     csocket();
-    ~csocket(); 
+    ~csocket();
 
     static int      resolveHost( const std::string& szRemoteHostName, struct hostent** pHostEnt );
     int             connect( const char* remoteHost, unsigned int remotePort );
